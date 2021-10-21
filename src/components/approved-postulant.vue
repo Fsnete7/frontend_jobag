@@ -1,6 +1,5 @@
 <template>
   <v-app>
-    <main-nav-employer></main-nav-employer>
     <v-content>
       <v-container fluid id="title-cont" >
         <h2 style="color: #1955AE" class="text-center">Desarrollador Front End</h2>
@@ -28,10 +27,9 @@
 </template>
 
 <script>
-import MainNavEmployer from "../components/main-nav-employer";
 export default {
   name: "approved-postulant",
-  components: {MainNavEmployer},
+  components: { },
   props: {
     postulant: {'name':String, 'photo':String}
   },

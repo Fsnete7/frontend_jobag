@@ -7,6 +7,8 @@ import Postulation2 from '../components/postulation-step-2';
 import Postulation3 from '../components/postulation-step-3'
 import ConfirmationPostulation from '../components/confirmation-postulation'
 import CreateInterview from '../components/create-interview'
+import MyPostulations from '../components/my-postulations'
+import MyInterviews from '../components/my-interviews'
 Vue.use(VueRouter)
 
 const routes = [
@@ -17,18 +19,24 @@ const routes = [
     component: HomePostulant
   },
   {
+    path: '/my-interviews',
+    name: 'my-interviews',
+    component: MyInterviews
+  },
+  {
     path: '/watch-job',
     name: 'watchjob',
     component: WatchJob
   },
   {
+    path: '/my-postulations',
+    name: 'mypostulations',
+    component: MyPostulations
+  },
+  {
     path: '/about',
     name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-
   },
   {
     path:'/watch_job/postulation',
@@ -52,10 +60,7 @@ const routes = [
   },
   {
     path: '/create-ad',
-    name: 'create_job_ad',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
+    name: 'create-ad',
     component: () => import('../components/create-job-ad')
   },
   {

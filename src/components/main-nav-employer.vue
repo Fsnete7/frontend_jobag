@@ -18,6 +18,7 @@
           <v-img
               max-height="50"
               max-width="50"
+
               src="https://img.freepik.com/foto-gratis/retrato-hombre-joven-expresivo-vistiendo-traje-formal_273609-6942.jpg?size=626&ext=jpg"></v-img>
         </v-avatar>
       </v-btn>

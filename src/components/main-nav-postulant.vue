@@ -2,7 +2,7 @@
   <div>
     <v-app-bar app color=#FFFFFF>
       <!--Drawer Icon-->
-      <v-app-bar-nav-icon align="right" @click.stop="drawer = !drawer" color="blue"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon align="right" @click.stop="drawer = !drawer" color="#1955AE"></v-app-bar-nav-icon>
 
       <v-btn plain icon class="center" depressed to="/home-postulant">
           <v-avatar size="100">
@@ -40,13 +40,41 @@
       <v-divider style="background: white;margin-top: 8px"></v-divider>
       <v-list nav dense>
         <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
-          <v-list-item v-for="items in menuitems" :key="items">
+          <v-list-item>
             <v-list-item-content>
-              <v-list-item-title class="text_sidebar">{{ items }}</v-list-item-title>
+              <v-list-item-title class="text_sidebar">
+                Mis Postulaciones
+              </v-list-item-title>
               <v-divider style="background: white;margin-top: 8px"></v-divider>
             </v-list-item-content>
           </v-list-item>
 
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-title class="text_sidebar">
+                Mis Entrevistas
+              </v-list-item-title>
+              <v-divider style="background: white;margin-top: 8px"></v-divider>
+            </v-list-item-content>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-title class="text_sidebar">
+                Configuración
+              </v-list-item-title>
+              <v-divider style="background: white;margin-top: 8px"></v-divider>
+            </v-list-item-content>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-title class="text_sidebar">
+                Mi Cuenta
+              </v-list-item-title>
+              <v-divider style="background: white;margin-top: 8px"></v-divider>
+            </v-list-item-content>
+          </v-list-item>
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>

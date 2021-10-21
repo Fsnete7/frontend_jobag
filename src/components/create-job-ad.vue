@@ -1,6 +1,5 @@
 <template>
     <v-app>
-        <main-nav-employer></main-nav-employer>
         <v-content>
           <v-container fluid id="princ-cont">
             <h1 class="text-center" style="color: #1955AE"> Crear Nuevo Anuncio de Trabajo</h1>
@@ -42,13 +41,12 @@
 
 <script>
 
-import MainNavEmployer from "../components/main-nav-employer";
 import BtnCreateDialog from "../components/btn-create-dialog";
 export default {
   name: "create-job-ad",
   components: {
     BtnCreateDialog,
-    MainNavEmployer
+
   },
 }
 </script>
