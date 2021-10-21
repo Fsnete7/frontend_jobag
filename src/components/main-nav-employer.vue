@@ -4,7 +4,7 @@
       <!--Drawer Icon-->
       <v-app-bar-nav-icon align="right" @click.stop="drawer = !drawer" color="#1955AE"></v-app-bar-nav-icon>
 
-      <v-btn plain icon class="center" depressed to="/home-employer">
+      <v-btn plain icon class="center" to="/home-employer">
         <v-avatar size="100">
           <v-img
               max-height="70"
@@ -13,12 +13,13 @@
         </v-avatar>
       </v-btn>
 
-      <v-btn icon>
+      <v-btn icon >
         <v-avatar right color=#1955AE size="50">
           <v-img
               max-height="50"
               max-width="50"
-              src="https://imagenes.elpais.com/resizer/scDp4N5i3hPpyTudfS1SiOjR9kA=/1200x0/cloudfront-eu-central-1.images.arcpublishing.com/prisa/CXO5DJG7RJBMLJGJH3LBMZ3ARI"></v-img>
+
+              src="https://img.freepik.com/foto-gratis/retrato-hombre-joven-expresivo-vistiendo-traje-formal_273609-6942.jpg?size=626&ext=jpg"></v-img>
         </v-avatar>
       </v-btn>
 

@@ -41,7 +41,6 @@
 
 <script>
 
-
 import BtnCreateDialog from "../components/btn-create-dialog";
 export default {
   name: "create-job-ad",

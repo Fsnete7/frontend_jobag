@@ -5,11 +5,11 @@
         <v-container fluid style="width: 600px">
           <v-row class="align-center justify-center">
             <v-img src="../assets/Name_Tag.png" height="50px" width="50px" contain="contain"></v-img>
-            <h2 style="color: #1955AE" class="text-justify">BUSCAR OFERTAS DE TRABAJO</h2>
+            <h2 style="color: #1955AE" class="text-center">MIS ANUNCIOS</h2>
             <v-img src="../assets/Home_Office.png" height="50px" width="50px" contain="contain"></v-img>
           </v-row>
-          <v-textarea label="Puesto, empresa o palabra clave"  auto-grow outlined rows="1"
-                      row-height="15" style="margin-top: 20px;"></v-textarea>
+            <v-textarea label="Puesto, empresa o palabra clave"  auto-grow outlined rows="1"
+                        row-height="15" style="margin-top: 20px;"></v-textarea>
           <v-container class="text-center">
             <v-btn class="white--text" depressed color="#1955AE" rounded width="170px">Buscar</v-btn>
           </v-container>
@@ -73,8 +73,6 @@
             </v-card>
             </v-row>
           </v-col>
-
-
         </v-row>
       </v-col>
     </v-content>
@@ -82,8 +80,6 @@
 </template>
 
 <script>
-
-
 
 export default {
   name: "home-employer",
