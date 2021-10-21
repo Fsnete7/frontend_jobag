@@ -1,6 +1,5 @@
 <template>
   <v-app>
-    <main-nav-employer></main-nav-employer>
     <v-content>
       <v-col>
         <v-container fluid style="width: 600px">
@@ -15,7 +14,6 @@
               <v-btn class="white--text" depressed color="#1955AE" rounded width="170px">Buscar</v-btn>
           </v-container>
         </v-container>
-
         <v-row>
           <v-col cols="12" md="4">
             <v-container fluid id="filter" class="text-center">
@@ -75,26 +73,21 @@
               </v-list-item>
             </v-card>
             </v-row>
-
           </v-col>
-
-
         </v-row>
-
       </v-col>
-
     </v-content>
   </v-app>
 </template>
-
-
 
 <script>
 
 import JobApiService from '../core/services/jobs-api-service';
 
+
 export default {
   name: "home_postulant",
+  components: { },
   data: () => ({
     jobs: [],
     items: [

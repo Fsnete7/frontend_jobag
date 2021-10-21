@@ -4,13 +4,13 @@
       <!--Drawer Icon-->
       <v-app-bar-nav-icon align="right" @click.stop="drawer = !drawer" color="#1955AE"></v-app-bar-nav-icon>
 
-      <v-btn plain icon class="center" depressed to="/home-postulant">
-          <v-avatar size="100">
-            <v-img
-                max-height="70"
-                max-width="70"
-                src="../assets/logo.png"></v-img>
-          </v-avatar>
+      <v-btn plain icon class="center" depressed to="/home-employer">
+        <v-avatar size="100">
+          <v-img
+              max-height="70"
+              max-width="70"
+              src="../assets/logo.png"></v-img>
+        </v-avatar>
       </v-btn>
 
       <v-btn icon>
@@ -40,41 +40,13 @@
       <v-divider style="background: white;margin-top: 8px"></v-divider>
       <v-list nav dense>
         <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
-          <v-list-item>
+          <v-list-item v-for="items in menuitems" :key="items">
             <v-list-item-content>
-              <v-list-item-title class="text_sidebar">
-                Mis Postulaciones
-              </v-list-item-title>
+              <v-list-item-title class="text_sidebar">{{ items }}</v-list-item-title>
               <v-divider style="background: white;margin-top: 8px"></v-divider>
             </v-list-item-content>
           </v-list-item>
 
-          <v-list-item>
-            <v-list-item-content>
-              <v-list-item-title class="text_sidebar">
-                Mis Entrevistas
-              </v-list-item-title>
-              <v-divider style="background: white;margin-top: 8px"></v-divider>
-            </v-list-item-content>
-          </v-list-item>
-
-          <v-list-item>
-            <v-list-item-content>
-              <v-list-item-title class="text_sidebar">
-                Configuración
-              </v-list-item-title>
-              <v-divider style="background: white;margin-top: 8px"></v-divider>
-            </v-list-item-content>
-          </v-list-item>
-
-          <v-list-item>
-            <v-list-item-content>
-              <v-list-item-title class="text_sidebar">
-                Mi Cuenta
-              </v-list-item-title>
-              <v-divider style="background: white;margin-top: 8px"></v-divider>
-            </v-list-item-content>
-          </v-list-item>
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
@@ -83,27 +55,29 @@
 
 
 <script>
+
 export default {
-  name: "main-nav-postulant",
+  name: "main-nav-employer",
 
   data: () => ({
     drawer: false,
     group: null,
     menuitems:[
-      'Inicio',
-      'Publicar anuncio',
-      'Mis anuncios',
-      'Entrevistas',
-      'Mi cuenta',
-      'Configuración',
-      'Cerrar Sesión',
+        'Inicio',
+        'Publicar anuncio',
+        'Mis anuncios',
+        'Entrevistas',
+        'Mi cuenta',
+        'Configuración',
+        'Cerrar Sesión',
     ]
   }),
   watch: {
     group() {
       this.drawer = false
     }
-  }
+  },
+
 }
 </script>
 

@@ -1,6 +1,7 @@
 <template>
   <v-app>
-    <main-nav-employer></main-nav-employer>
+    <main-nav-postulant></main-nav-postulant>
+
     <v-main class="grey lighten-3">
       <v-container fluid>
         <router-view></router-view>
@@ -11,13 +12,11 @@
 
 
 <script>
-
-
-import MainNavEmployer from "@/components/main-nav-employer";
-
+import MainNavPostulant from "./components/main-nav-postulant";
 export default {
   components: {
-    MainNavEmployer,
+    MainNavPostulant
+
 
   },
   data: () => ({
