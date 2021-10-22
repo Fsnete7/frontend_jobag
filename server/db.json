@@ -1,4 +1,14 @@
 {
+  "idioms": [
+    {
+      "id": 1,
+      "name": "Japanese"
+    },
+    {
+      "id": 2,
+      "name": "Español"
+    }
+  ],
   "users": [
     {
       "id": 4,
