@@ -50,7 +50,7 @@
       <div class="txt_parrafo" >Adjunta tu hoja de vida detallando información
       relevante para el puesto de trabajo al que postulas</div>
       &nbsp;
-      <div class="text-center">
+      <div>
         <v-file-input
             show-size
             label="File input"

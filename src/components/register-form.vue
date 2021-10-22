@@ -28,9 +28,10 @@
               <v-text-field color="#1955AE" label="Confirm Password" v-model="confirmPassword" :rules="confirmPasswordRules" required
                             :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'" :type="show2 ? 'text' : 'password'"
                             @click:append="show2 = !show2" outlined style="max-width: 400px"></v-text-field>
-
+              <router-link :to="{name: this.linkBtnContinue}" style=" text-decoration: none">
                 <v-btn color="#1955AE" style="width: 100% ; max-width: 400px;
                   font-size: 18px; height: 50px; border-radius: 15px; color:white" @click="createUser()">Continue</v-btn>
+              </router-link>
             </v-col>
           </v-form>
         </v-col>
@@ -48,6 +49,7 @@ import EmployersApiService from '../core/services/employers-api-service';
 export default {
   name: "register-form",
   data: () => ({
+    linkBtnContinue:'',
     files: [],
     title:'',
     img: '',
@@ -84,6 +86,7 @@ export default {
     this.img = this.$route.params.type === "postulant" ? imgPostulant : imgEmployer
     this.txtbox1 = this.$route.params.type === "postulant" ? "Name" : "Company Name"
     this.txtbox2 = this.$route.params.type === "postulant" ? "Last Name" : "RUC"
+    this.linkBtnContinue = this.$route.params.type === "postulant" ? 'profile' : 'Register'
     this.ruc_or_lastNameRule = this.$route.params.type === "postulant"
         ? [
           v => !!v || 'Last name is required',
@@ -103,7 +106,6 @@ export default {
       this.$refs.form.validate()
     },
     createUser() {
-
       if(this.$route.params.type === "postulant"){
         this.user.lastName = this.ruc_or_lastName;
         PostulantsApiService.create(this.user);
@@ -111,7 +113,6 @@ export default {
         this.user.ruc = this.ruc_or_lastName
         EmployersApiService.create(this.user);
       }
-
     }
   },
 }

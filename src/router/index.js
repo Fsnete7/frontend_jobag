@@ -3,28 +3,11 @@ import VueRouter from 'vue-router'
 import HomePostulant from '../components/home-postulant'
 import login from "@/components/login";
 import register from "@/components/register";
-import MyAccount from '../components/my-account'
-import ModifyProfessionalProfile from '../components/modify-professional-profile'
-import ModifyPersonalInformation from '../components/modify-personal-information'
-import ModifyBusinessProfile from '../components/modify-business-profile'
+
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/modify-professional-profile',
-    name: 'modify-professional-profile',
-    component: ModifyProfessionalProfile
-  },
-  {
-    path: '/modify-business-profile',
-    name: 'modify-business-profile',
-    component: ModifyBusinessProfile
-  },
-  {
-    path: '/modify-personal-information',
-    name: 'modify-personal-information',
-    component: ModifyPersonalInformation
-  },
+
   {
     path: '/home-postulant',
     name: 'home-postulant',
@@ -41,14 +24,10 @@ const routes = [
     component: register
   },
   {
-    path: '/my-account',
-    name: 'my-account',
-    component: MyAccount
-  },
-  {
     path: '/register-form/:type',
     name: 'RegisterForm',
-    component: () => import('../components/register-form')  },
+    component: () => import('../components/register-form')
+  },
   {
     path: '/my-interviews',
     name: 'my-interviews',
@@ -117,7 +96,13 @@ const routes = [
   {
     path: '/create-interview',
     name: 'create-interview',
-    component: () => import('../components/create-interview')  },
+    component: () => import('../components/create-interview')
+  },
+  {
+    path: '/professional-profile',
+    name: 'profile',
+    component: () => import('../components/professional-profile')
+  },
 ]
 
 const router = new VueRouter({

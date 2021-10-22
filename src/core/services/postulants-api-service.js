@@ -19,10 +19,6 @@ class PostulantsApiService{
     delete(id) {
         return http.delete(`/postulants/${id}`);
     }
-
-    getAllIdioms(){
-        return http.get("/idioms");
-    }
 }
 
 export default new PostulantsApiService();
