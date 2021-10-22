@@ -25,6 +25,9 @@ export default {
 }
 </script>
 
-<!--  <v-btn plain to="/home" color="white">Home</v-btn> |
-      <v-btn plain to="/homepage" color="white">Casita</v-btn> |
-      <v-btn plain to="/about" color="white">About</v-btn>-->
+<style>
+main {
+  background-image: url("assets/fondo.png");
+  background-size: cover;
+}
+</style>
