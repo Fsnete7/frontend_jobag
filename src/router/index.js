@@ -103,6 +103,11 @@ const routes = [
     name: 'profile',
     component: () => import('../components/professional-profile')
   },
+  {
+    path: '/modify-job-ad',
+    name: 'modify-job-ad',
+    component: () => import('../components/modify-job-ad')
+  },
 ]
 
 const router = new VueRouter({
