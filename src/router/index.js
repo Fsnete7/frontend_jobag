@@ -1,100 +1,123 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomePostulant from '../components/home-postulant'
-import WatchJob from '../components/watch-job'
-import Postulation from "../components/postulation-step-1";
-import Postulation2 from '../components/postulation-step-2';
-import Postulation3 from '../components/postulation-step-3'
-import ConfirmationPostulation from '../components/confirmation-postulation'
-import CreateInterview from '../components/create-interview'
+import login from "@/components/login";
+import register from "@/components/register";
+import MyAccount from '../components/my-account'
+import ModifyProfessionalProfile from '../components/modify-professional-profile'
+import ModifyPersonalInformation from '../components/modify-personal-information'
+import ModifyBusinessProfile from '../components/modify-business-profile'
 Vue.use(VueRouter)
 
 const routes = [
-
+  {
+    path: '/modify-professional-profile',
+    name: 'modify-professional-profile',
+    component: ModifyProfessionalProfile
+  },
+  {
+    path: '/modify-business-profile',
+    name: 'modify-business-profile',
+    component: ModifyBusinessProfile
+  },
+  {
+    path: '/modify-personal-information',
+    name: 'modify-personal-information',
+    component: ModifyPersonalInformation
+  },
   {
     path: '/home-postulant',
     name: 'home-postulant',
     component: HomePostulant
   },
   {
+    path: '/login',
+    name: 'LogIn',
+    component: login
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: register
+  },
+  {
+    path: '/my-account',
+    name: 'my-account',
+    component: MyAccount
+  },
+  {
+    path: '/register-form/:type',
+    name: 'RegisterForm',
+    component: () => import('../components/register-form')  },
+  {
+    path: '/my-interviews',
+    name: 'my-interviews',
+    component: () => import('../components/my-interviews')
+  },
+  {
     path: '/watch-job',
     name: 'watchjob',
-    component: WatchJob
+    component: () => import('../components/watch-job')
+  },
+  {
+    path: '/my-postulations',
+    name: 'mypostulations',
+    component: () => import('../components/my-postulations')
   },
   {
     path: '/about',
     name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-
   },
   {
     path:'/watch_job/postulation',
     name: 'Postulation',
-    component: Postulation
+    component: () => import(/* webpackChunkName: "about" */ '../components/postulation-step-1')
   },
   {
     path:'/watch_job/postulation2',
     name: 'Postulation-step-2',
-    component: Postulation2
+    component: () => import(/* webpackChunkName: "about" */ '../components/postulation-step-2')
   },
   {
     path:'/watch_job/postulation3',
     name: 'postulation-step-3',
-    component: Postulation3
+    component: () => import(/* webpackChunkName: "about" */ '../components/postulation-step-3')
   },
   {
     path: '/watch_job/confirmation',
     name: 'confirmation-postulation',
-    component: ConfirmationPostulation
+    component: () => import('../components/confirmation-postulation')
   },
   {
     path: '/create-ad',
-    name: 'create_job_ad',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
+    name: 'create-ad',
     component: () => import('../components/create-job-ad')
   },
   {
     path: '/choose-postulant',
     name: 'choose_postulant',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import('../components/choose-postulant')
   },
   {
     path: '/home-employer',
     name: 'home_employer',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import('../components/home-employer')
   },
   {
     path: '/approved-postulant',
     name: 'approved_postulant',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import('../components/approved-postulant')
   },
   {
     path: '/contract',
     name: 'contract',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import('../components/contract')
   },
   {
     path: '/create-interview',
     name: 'create-interview',
-    component: CreateInterview
-  },
+    component: () => import('../components/create-interview')  },
 ]
 
 const router = new VueRouter({
