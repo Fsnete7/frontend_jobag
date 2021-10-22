@@ -95,6 +95,11 @@ const routes = [
     name: 'create-interview',
     component: CreateInterview
   },
+  {
+    path: '/modify-job-ad',
+    name: 'modify-job-ad',
+    component: () => import('../components/modify-job-ad')
+  },
 ]
 
 const router = new VueRouter({
