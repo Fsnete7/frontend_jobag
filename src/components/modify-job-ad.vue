@@ -32,7 +32,7 @@
           </v-container>
         </v-form>
         <div class="text-right">
-          <btn-create-dialog v-bind:lblbtn="'GUARDAR CAMBIOS'" text="Cambios guardados" ></btn-create-dialog>
+          <btn-create-dialog v-bind:lblbtn="'SAVE CHANGES'" text="Cambios guardados" ></btn-create-dialog>
         </div>
       </v-container>
     </v-content>
