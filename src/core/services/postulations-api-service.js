@@ -5,5 +5,4 @@ class PostulantApprovedApiService{
         return http.get("/postulations");
     }
 }
-
 export default new PostulantApprovedApiService();
