@@ -67,7 +67,7 @@
             </v-list-item-content>
           </v-list-item>
 
-          <v-list-item>
+          <v-list-item depressed to="/my-account">
             <v-list-item-content>
               <v-list-item-title class="text_sidebar">
                 Mi Cuenta
