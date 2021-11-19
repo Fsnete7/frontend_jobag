@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomePostulant from '../components/home-postulant'
 import login from "@/components/login";
 import register from "@/components/register";
 
@@ -11,7 +10,7 @@ const routes = [
   {
     path: '/home-postulant',
     name: 'home-postulant',
-    component: HomePostulant
+    component: () => import('../components/home-postulant')
   },
   {
     path: '/login',
@@ -108,6 +107,21 @@ const routes = [
     name: 'modify-job-ad',
     component: () => import('../components/modify-job-ad')
   },
+  {
+    path: '/my-account',
+    name: 'my-account',
+    component: () => import('../components/my-account')
+  },
+  {
+    path: '/modify-personal-information',
+    name: 'modify-personal-information',
+    component: () => import('../components/modify-personal-information')
+  },
+  {
+    path: '/modify-professional-profile',
+    name: 'modify-professional-profile',
+    component: () => import('../components/modify-professional-profile')
+  }
 ]
 
 const router = new VueRouter({

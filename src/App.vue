@@ -1,7 +1,6 @@
 <template>
   <v-app>
     <main-nav-postulant></main-nav-postulant>
-
     <v-main class="grey lighten-3">
       <v-container fluid>
         <router-view></router-view>
@@ -16,8 +15,6 @@ import MainNavPostulant from "./components/main-nav-postulant";
 export default {
   components: {
     MainNavPostulant
-
-
   },
   data: () => ({
     //
