@@ -39,7 +39,7 @@
 
 <script>
 export default {
-  name: "modificar-perfil-empresarial"
+  name: "modify-business-profile"
 }
 </script>
 

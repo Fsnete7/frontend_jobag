@@ -122,6 +122,10 @@ export default {
       },
     ],
   }),
+
+  async created() {
+    this.refresh()
+  }
 }
 </script>
 

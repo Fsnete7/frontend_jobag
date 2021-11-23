@@ -6,7 +6,7 @@
           <v-row class="align-center justify-center">
             <v-img src="../assets/Name_Tag.png" height="50px" width="50px" contain="contain"></v-img>
             <h2 style="color: #1955AE" class="text-justify">BUSCAR OFERTAS DE TRABAJO</h2>
-            <v-img src="../assets/Home_Office.png" height="50px" width="50px" contain="contain"></v-img>
+            <v-img src="src/assets/Home_Office.png" height="50px" width="50px" contain="contain"></v-img>
           </v-row>
           <v-textarea label="Puesto, empresa o palabra clave"  auto-grow outlined rows="1"
                       row-height="15" style="margin-top: 20px;"></v-textarea>
