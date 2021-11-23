@@ -13,7 +13,7 @@ class JobOfferApiService{
     }
 
     update(id, data) {
-        return http.put(`/JobOffers/${id}`, data);
+        return http.put(`/joboffers/${id}`, data);
     }
 
     delete(id) {
@@ -21,7 +21,7 @@ class JobOfferApiService{
     }
 
     getByEmployerId(id){
-        return http.get(`/JobOffers/?EmployerId=${id}`);
+        return http.get(`/joboffers/?jobOfferId=${id}`);
     }
 }
 

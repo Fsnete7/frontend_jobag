@@ -53,13 +53,13 @@
               <v-list-item three-line>
                 <v-list-item-content>
                   <div class="text-overline mb-4 txt_anuncio">
-                    {{ JobOffer.Date}}
+                    {{ JobOffer.date}}
                   </div>
                   <v-list-item-title class="text-h5 mb-1 txt_anuncio">
-                    {{ JobOffer.Name }}
+                    {{ JobOffer.name }}
                   </v-list-item-title>
                   <v-list-item-subtitle>
-                    s/.{{ JobOffer.Salary }} por mes
+                    s/.{{ JobOffer.salary }} por mes
                   </v-list-item-subtitle>
                 </v-list-item-content>
                 <v-list-item-avatar

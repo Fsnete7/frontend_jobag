@@ -1,27 +1,42 @@
 
 <template>
-  <v-content >
-    <div v-if="Edit===1" align="center" >
+  <v-content  align="center" >
+
+    <div align="center" v-if="edit===0" >
+      <v-col align="center"  >
       <v-row class="align-center justify-center">
         <h2 style="color: #1955AE" class="align-center" >COMPANY PROFILE
         </h2>
       </v-row>
 
       <v-row class="v-text-field align-center justify-center"  max-width="1200">
-        <v-card
-            elevation="2"
-            tile
-        >{{ user.FirstName }}</v-card>
+
         <v-text-field
-            v-model="sectorId"
+            v-model="companies.direction"
+
+            :disabled="isUpdating"
+            filled
+            color="blue-grey lighten-2"
+            label="Direction"
+        ></v-text-field>
+        <v-text-field
+            v-model="companies.district"
+            :disabled="isUpdating"
+            filled color="blue-grey lighten-2"
+            label="Dsitrict" class="align-center"
+        ></v-text-field>
+        <v-text-field v-model="companies.city"
+                      :disabled="isUpdating"
+                      filled color="blue-grey lighten-2"
+                      label="City" class="align-center"
+        ></v-text-field>
+        <v-text-field
+            v-model="companies.country"
             :disabled=false
             filled
             color="blue-grey lighten-2"
-            label="Name"
+            label="Country"
         ></v-text-field>
-        <v-text-field v-model="name" :disabled="isUpdating" filled color="blue-grey lighten-2"
-                      label="Business area" class="align-center"></v-text-field>
-        <v-text-field v-model="name" :disabled="isUpdating" filled color="blue-grey lighten-2" label="Description" class="align-center"></v-text-field>
       </v-row>
 
 
@@ -33,27 +48,76 @@
       </template>
 
       <v-row class="v-text-field align-center justify-center"  max-width="1200">
-        <v-text-field v-model="name" :disabled="isUpdating" filled color="blue-grey lighten-2" label="Web page" class="align-center"></v-text-field>
-        <v-text-field v-model="name" :disabled="isUpdating" filled color="blue-grey lighten-2" label="Contact" class="align-center"></v-text-field>
+        <v-text-field v-model="Sector" :disabled="isUpdating"
+                      filled color="blue-grey lighten-2"
+                      label="Sector" class="align-center"></v-text-field>
+
       </v-row>
 
       <v-row class="align-center justify-center">
         <v-btn color="#1955AE"
-               dark to="/home-postulant">Save Changes</v-btn>
+               dark  @click="editar()">Edit</v-btn>
       </v-row>
-
+      </v-col>
     </div>
 
+<!--EDIT-->
 
-    <div v-else-if="Edit===0" align="center">
+    <div align="center" v-else-if="edit===1" >
+        <v-row class="align-center justify-center">
+          <h2 style="color: #1955AE" class="align-center" >COMPANY PROFILE
+          </h2>
+        </v-row>
+
+        <v-row class="v-text-field align-center justify-center"  max-width="1200">
+
+          <v-text-field
+              v-model="direction"
+              filled
+              color="blue-grey lighten-2"
+              label="Direction"
+          ></v-text-field>
+          <v-text-field
+              v-model="district"
+              :disabled="isUpdating"
+              filled color="blue-grey lighten-2"
+              label="District" class="align-center"
+          ></v-text-field>
+          <v-text-field v-model="city"
+                        :disabled="isUpdating"
+                        filled color="blue-grey lighten-2"
+                        label="City" class="align-center"
+          ></v-text-field>
+          <v-text-field
+              v-model="country"
+              :disabled=false
+              filled
+              color="blue-grey lighten-2"
+              label="Country"
+          ></v-text-field>
+        </v-row>
 
 
-      <v-row class="align-center justify-center">
-        <v-btn color="#1955AE"
-               dark to="/home-postulant">Edit</v-btn>
-      </v-row>
+        <template>
+          <v-file-input
+              show-size
+              label="Attach business photos"
+          ></v-file-input>
+        </template>
 
+        <v-row class="v-text-field align-center justify-center"  max-width="1200">
+          <v-text-field v-model="name" :disabled="isUpdating"
+                        filled color="blue-grey lighten-2"
+                        label="Sector" class="align-center"></v-text-field>
+
+        </v-row>
+
+        <v-row class="align-center justify-center">
+          <v-btn color="#1955AE"
+                 dark  @click="save()">Save Changes</v-btn>
+        </v-row>
     </div>
+
   </v-content>
 </template>
 
@@ -62,28 +126,43 @@
 
 
 import CompanyProfilesApiService from "../core/services/company-profile-api-service";
+
 export default {
   name: "modify-business-profile",
 
   data: () => ({
-    user: [],
-    profile: [],
-    sectorId: [],
-    Sector: [],
-    IdUser: [],
-    SectorName:"",
-    Direction:"",
-    Edit:1
+    companies: [],
+    direction: '',
+    district: '',
+    city:'',
+    country:'',
+    edit:0,
+    id:0
   }),
   async created() {
+
     try {
-      const response = await CompanyProfilesApiService.getByEmployerId(1);
-      this.user = response.data;
-      this.sectorId=this.user.id;
+      const response = await CompanyProfilesApiService.getById(2);
+      this.companies = response.data;
     }
     catch (e)
     {
       console.error(e);
+    }
+  },
+  methods:{
+    editar(){
+      this.edit=1;
+      this.created();
+    },
+    save(){
+      this.companies.direction=this.direction;
+      this.companies.district=this.district;
+      this.companies.city=this.city;
+      this.companies.country=this.country;
+      CompanyProfilesApiService.update(2,this.companies);
+      this.edit=0;
+      this.created();
     }
   }
 }
