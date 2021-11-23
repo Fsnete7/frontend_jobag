@@ -24,26 +24,42 @@ const routes = [
   {
     path: '/about',
     name: 'About',
+<<<<<<< Updated upstream
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
 
+=======
+    component: () => import('../views/About.vue')
+>>>>>>> Stashed changes
   },
   {
     path:'/watch_job/postulation',
     name: 'Postulation',
+<<<<<<< Updated upstream
     component: Postulation
+=======
+    component: () => import('../components/postulation-step-1')
+>>>>>>> Stashed changes
   },
   {
     path:'/watch_job/postulation2',
     name: 'Postulation-step-2',
+<<<<<<< Updated upstream
     component: Postulation2
+=======
+    component: () => import('../components/postulation-step-2')
+>>>>>>> Stashed changes
   },
   {
     path:'/watch_job/postulation3',
     name: 'postulation-step-3',
+<<<<<<< Updated upstream
     component: Postulation3
+=======
+    component: () => import('../components/postulation-step-3')
+>>>>>>> Stashed changes
   },
   {
     path: '/watch_job/confirmation',
@@ -59,6 +75,7 @@ const routes = [
     component: () => import('../components/create-job-ad')
   },
   {
+<<<<<<< Updated upstream
     path: '/choose-postulant',
     name: 'choose_postulant',
     // route level code-splitting
@@ -72,6 +89,15 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
+=======
+    path: '/joob-offer/:id/choose-postulant',
+    name: 'choose-postulant',
+    component: () => import('../components/choose-postulant')
+  },
+  {
+    path: '/:id/home-employer',
+    name: 'home-employer',
+>>>>>>> Stashed changes
     component: () => import('../components/home-employer')
   },
   {
