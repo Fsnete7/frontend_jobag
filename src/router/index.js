@@ -1,8 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import login from "@/components/login";
-import register from "@/components/register";
-
+import HomePostulant from '../components/home-postulant'
+import WatchJob from '../components/watch-job'
+import Postulation from "../components/postulation-step-1";
+import Postulation2 from '../components/postulation-step-2';
+import Postulation3 from '../components/postulation-step-3'
+import ConfirmationPostulation from '../components/confirmation-postulation'
+import CreateInterview from '../components/create-interview'
 Vue.use(VueRouter)
 
 const routes = [
@@ -10,135 +14,113 @@ const routes = [
   {
     path: '/home-postulant',
     name: 'home-postulant',
-    component: () => import('../components/home-postulant')
-  },
-  {
-    path: '/login',
-    name: 'LogIn',
-    component: login
-  },
-  {
-    path: '/register',
-    name: 'Register',
-    component: register
-  },
-  {
-    path: '/register-form/:type',
-    name: 'RegisterForm',
-    component: () => import('../components/register-form')
-  },
-  {
-    path: '/my-interviews',
-    name: 'my-interviews',
-    component: () => import('../components/my-interviews')
+    component: HomePostulant
   },
   {
     path: '/watch-job',
     name: 'watchjob',
-    component: () => import('../components/watch-job')
-  },
-  {
-    path: '/my-postulations',
-    name: 'mypostulations',
-    component: () => import('../components/my-postulations')
+    component: WatchJob
   },
   {
     path: '/about',
     name: 'About',
+<<<<<<< Updated upstream
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+
+=======
+    component: () => import('../views/About.vue')
+>>>>>>> Stashed changes
   },
   {
     path:'/watch_job/postulation',
     name: 'Postulation',
-    component: () => import(/* webpackChunkName: "about" */ '../components/postulation-step-1')
+<<<<<<< Updated upstream
+    component: Postulation
+=======
+    component: () => import('../components/postulation-step-1')
+>>>>>>> Stashed changes
   },
   {
     path:'/watch_job/postulation2',
     name: 'Postulation-step-2',
-    component: () => import(/* webpackChunkName: "about" */ '../components/postulation-step-2')
+<<<<<<< Updated upstream
+    component: Postulation2
+=======
+    component: () => import('../components/postulation-step-2')
+>>>>>>> Stashed changes
   },
   {
     path:'/watch_job/postulation3',
     name: 'postulation-step-3',
-    component: () => import(/* webpackChunkName: "about" */ '../components/postulation-step-3')
+<<<<<<< Updated upstream
+    component: Postulation3
+=======
+    component: () => import('../components/postulation-step-3')
+>>>>>>> Stashed changes
   },
   {
     path: '/watch_job/confirmation',
     name: 'confirmation-postulation',
-    component: () => import('../components/confirmation-postulation')
+    component: ConfirmationPostulation
   },
   {
     path: '/create-ad',
-    name: 'create-ad',
+    name: 'create_job_ad',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
     component: () => import('../components/create-job-ad')
   },
   {
+<<<<<<< Updated upstream
     path: '/choose-postulant',
-    name: 'choose-postulant',
+    name: 'choose_postulant',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
     component: () => import('../components/choose-postulant')
   },
   {
     path: '/home-employer',
+    name: 'home_employer',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+=======
+    path: '/joob-offer/:id/choose-postulant',
+    name: 'choose-postulant',
+    component: () => import('../components/choose-postulant')
+  },
+  {
+    path: '/:id/home-employer',
     name: 'home-employer',
+>>>>>>> Stashed changes
     component: () => import('../components/home-employer')
   },
   {
     path: '/approved-postulant',
     name: 'approved_postulant',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
     component: () => import('../components/approved-postulant')
   },
   {
     path: '/contract',
     name: 'contract',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
     component: () => import('../components/contract')
   },
   {
     path: '/create-interview',
     name: 'create-interview',
-    component: () => import('../components/create-interview')
+    component: CreateInterview
   },
-  {
-    path: '/professional-profile',
-    name: 'profile',
-    component: () => import('../components/professional-profile')
-  },
-  {
-    path: '/modify-job-ad',
-    name: 'modify-job-ad',
-    component: () => import('../components/modify-job-ad')
-  },
-  {
-    path: '/my-account',
-    name: 'my-account',
-    component: () => import('../components/my-account')
-  },
-  {
-    path: '/modify-personal-information',
-    name: 'modify-personal-information',
-    component: () => import('../components/modify-personal-information')
-  },
-  {
-    path: '/modify-professional-profile',
-    name: 'modify-professional-profile',
-    component: () => import('../components/modify-professional-profile')
-  },
-  {
-    path: '/modify-business-profile',
-    name: 'modify-business-profile',
-    component: () => import('../components/modify-business-profile')
-  },
-  {
-    path: '/account-employer',
-    name: 'account-employer',
-    component: () => import('../components/account-employer')
-  },
-  {
-    path: '/modify-personal-information2',
-    name: 'modify-personal-information2',
-    component: () => import('../components/modify-personal-information2')
-  }
-
-
 ]
 
 const router = new VueRouter({

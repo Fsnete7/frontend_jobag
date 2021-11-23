@@ -2,14 +2,14 @@ import http from "./http-common"
 
 class JobOfferApiService{
     getAll(){
-        return http.get("/JobOffers");
+        return http.get("/joboffers");
     }
     getById(id) {
-        return http.get(`/JobOffers/${id}`);
+        return http.get(`/joboffers/${id}`);
     }
 
     create(data) {
-        return http.post("/JobOffers", data);
+        return http.post("/joboffers", data);
     }
 
     update(id, data) {
@@ -17,11 +17,15 @@ class JobOfferApiService{
     }
 
     delete(id) {
-        return http.delete(`/JobOffers/${id}`);
+        return http.delete(`/joboffers/${id}`);
     }
 
     getByEmployerId(id){
-        return http.get(`/joboffers/?jobOfferId=${id}`);
+        return http.get(`/joboffers?employerId=${id}`);
+    }
+
+    getPostulants(id){
+        return http.get(`/joboffer/${id}/postulations`);
     }
 }
 

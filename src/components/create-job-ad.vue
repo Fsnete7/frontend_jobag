@@ -1,27 +1,28 @@
 <template>
     <v-app>
+        <main-nav-employer></main-nav-employer>
         <v-content>
           <v-container fluid id="princ-cont">
-            <h1 class="text-center" style="color: #1955AE"> Crear Nuevo Anuncio de Trabajo</h1>
+            <h1 class="text-center" style="color: #1955AE"> Create New Job AD</h1>
             <v-divider style="background: #1955AE; margin-bottom: 8%"></v-divider>
 
             <v-form>
               <v-container>
                 <v-row>
                   <v-col cols="12" sm="6" md="4">
-                    <v-textarea label="Puesto buscado"  auto-grow outlined rows="1" row-height="15"></v-textarea>
-                    <v-select :items="items" label="Tipo de puesto" outlined ></v-select>
-                    <v-textarea label="Lugar"  auto-grow outlined rows="1" row-height="15"></v-textarea>
+                    <v-textarea label="Position sought"  auto-grow outlined rows="1" row-height="15" v-model="position"></v-textarea>
+                    <v-select :items="items_experience" label="Experience" outlined v-model="experience"></v-select>
+                    <v-textarea label="WorkPlace"  auto-grow outlined rows="1" row-height="15" v-model="location"></v-textarea>
                   </v-col>
 
                   <v-col cols="12" sm="6" md="4">
-                    <v-select :items="items" label="Tipo de puesto" outlined ></v-select>
-                    <v-textarea label="Título del anuncio"  auto-grow outlined rows="1" row-height="15"></v-textarea>
-                    <v-textarea label="Suldo"  auto-grow outlined rows="1" row-height="15"></v-textarea>
+                    <v-select :items="items_tipo" label="Tipo de puesto" outlined v-model="jobType"></v-select>
+                    <v-textarea label="AD Title"  auto-grow outlined rows="1" row-height="15" v-model="title"></v-textarea>
+                    <v-textarea label="Salary"  auto-grow outlined rows="1" row-height="15" v-model="salary"></v-textarea>
                   </v-col>
 
                   <v-col cols="12" sm="12" md="4">
-                    <v-textarea outlined name="input-7-4" auto-grow height="230px" label="Descripción" ></v-textarea>
+                    <v-textarea outlined name="input-7-4" auto-grow height="230px" label="Description" v-model="description"></v-textarea>
                   </v-col>
 
                   <v-col cols="12" sm="12" md="6">
@@ -31,8 +32,28 @@
                 </v-row>
               </v-container>
             </v-form>
+
             <div class="text-right">
-              <btn-create-dialog v-bind:lblbtn="'Aceptar'" text="Anuncio Creado Satisfactoriamente" ></btn-create-dialog>
+
+              <v-dialog transition="dialog-top-transition" max-width="600">
+                <template v-slot:activator="{ on, attrs }">
+                  <v-btn color="#1955AE" dark v-bind="attrs" v-on="on" v-on:click="createAd">
+                    Create
+                  </v-btn>
+
+                </template>
+                <template>
+                  <v-card>
+                    <v-card-text>
+                      <div class="text-h5 text-center font-weight-bold black--text pa-12" >AD create succesfully</div>
+                      <v-container class="text-center">
+                        <v-btn class="white--text" to="/home-employer" color="#1955AE">Aceptar</v-btn>
+                      </v-container>
+                    </v-card-text>
+                  </v-card>
+                </template>
+              </v-dialog>
+
             </div>
           </v-container>
         </v-content>
@@ -41,13 +62,53 @@
 
 <script>
 
+<<<<<<< Updated upstream
+import MainNavEmployer from "../components/main-nav-employer";
 import BtnCreateDialog from "../components/btn-create-dialog";
 export default {
   name: "create-job-ad",
   components: {
     BtnCreateDialog,
-
+    MainNavEmployer
   },
+=======
+
+import JobOfferApiService from "../core/services/jobOffer-api-service";
+
+export default {
+  name: "create-job-ad",
+  data: () => ({
+      position: "",
+      title: "",
+      description: "",
+      salary: "",
+      location: "",
+      jobType: "",
+      experience:"",
+      items_experience: ["Without experience", "6 month - 1 year", "2 years - 3 years" , "3 or more years"],
+      items_tipo: [ "Full-Time", "Part-Time", "Semi-Full"]
+    }
+  ),
+  methods: {
+    createAd(){
+      let jobOffer = {
+        name: this.title,
+        description: this.description,
+        salary: this.salary,
+        workplace: this.location,
+        type: this.jobType,
+        experience: this.experience
+      }
+      JobOfferApiService.create(jobOffer)
+          .then(() => {
+            // this.$router.push("/home-employer");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+    }
+  }
+>>>>>>> Stashed changes
 }
 </script>
 

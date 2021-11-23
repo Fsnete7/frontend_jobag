@@ -2,22 +2,22 @@ import http from "./http-common"
 
 class EmployersApiService{
     getAll(){
-        return http.get("/employers");
+        return http.get("/employer");
     }
     getById(id) {
-        return http.get(`/employers/${id}`);
+        return http.get(`/employer/${id}`);
     }
 
     create(data) {
-        return http.post("/employers", data);
+        return http.post("/employer", data);
     }
 
     update(id, data) {
-        return http.put(`/employers/${id}`, data);
+        return http.put(`/employer/${id}`, data);
     }
 
     delete(id) {
-        return http.delete(`/employers/${id}`);
+        return http.delete(`/employer/${id}`);
     }
 }
 

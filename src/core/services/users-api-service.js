@@ -8,8 +8,8 @@ class UsersApiService{
     getCurrentUser(){
         return http.get(`/users/${this.currentSession}`);
     }
-    update(id, data) {
-        return http.put(`/users/${id}`, data);
+    create(data) {
+        return http.post("/users", data);
     }
 }
 

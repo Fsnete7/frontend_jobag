@@ -11,9 +11,9 @@
               San Isidro, Lima
             </div>
             <v-list-item-title class="text-h5 mb-1 txt_anuncio">
-              Desarollador Backend
+              {{JobOffer.name}}
             </v-list-item-title>
-            <v-list-item-subtitle>Claro</v-list-item-subtitle>
+            <v-list-item-subtitle>{{JobOffer.workplace}}</v-list-item-subtitle>
           </v-list-item-content>
 
           <v-list-item-avatar
@@ -56,12 +56,33 @@
 </template>
 
 <script>
-
 import ListPostulants from "../components/list-postulants";
+
+import JobOfferApiService from "../core/services/jobOffer-api-service";
+
 export default {
   name: "choose-postulant",
-  components: {ListPostulants,  }
+  components: {ListPostulants,  },
+  data: () =>({
+    JobOffer: {},
+  }),
+
+  methods: {
+    getJobOffer() {
+      JobOfferApiService.getById(this.$route.params.id)
+        .then(response => {
+          this.JobOffer = response.data;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+  },
+  mounted() {
+    this.getJobOffer()
+  }
 }
+
 </script>
 
 <style scoped>

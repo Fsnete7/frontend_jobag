@@ -22,6 +22,10 @@
               </v-file-input>
               <v-text-field color="#1955AE" label="Email" v-model="user.email" :rules="emailRules" required
                             outlined style="max-width: 400px"></v-text-field>
+              <v-text-field color="#1955AE" label="Phone Number" v-model="user.phone" required
+                            outlined style="max-width: 400px"></v-text-field>
+              <v-text-field color="#1955AE" :label=txtbox3 v-model="stattus_postition" required
+                            outlined style="max-width: 400px"></v-text-field>
               <v-text-field color="#1955AE" label="Password" v-model="user.password" :rules="passwordRules" required
                             :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'" :type="show1 ? 'text' : 'password'"
                             @click:append="show1 = !show1" outlined style="max-width: 400px" ></v-text-field>
@@ -30,7 +34,7 @@
                             @click:append="show2 = !show2" outlined style="max-width: 400px"></v-text-field>
               <router-link :to="{name: this.linkBtnContinue}" style=" text-decoration: none">
                 <v-btn color="#1955AE" style="width: 100% ; max-width: 400px;
-                  font-size: 18px; height: 50px; border-radius: 15px; color:white" @click="createUser()">Continue</v-btn>
+                  font-size: 18px; height: 50px; border-radius: 15px; color:white" @click="create()">Continue</v-btn>
               </router-link>
             </v-col>
           </v-form>
@@ -46,6 +50,8 @@ import imgPostulant from "../assets/postulante.png"
 
 import PostulantsApiService from '../core/services/postulants-api-service';
 import EmployersApiService from '../core/services/employers-api-service';
+import UserApiService from '../core/services/users-api-service';
+
 export default {
   name: "register-form",
   data: () => ({
@@ -55,10 +61,12 @@ export default {
     img: '',
     txtbox1:'',
     txtbox2:'',
+    txtbox3:'',
     //FORM
     valid: true,
     ruc_or_lastName: '',
-    user: {id: '', name: '', email: '', password: ''},
+    stattus_postition: '',
+    user: {},
     nameRules: [
       v => !!v || 'Name is required',
     ],
@@ -86,6 +94,7 @@ export default {
     this.img = this.$route.params.type === "postulant" ? imgPostulant : imgEmployer
     this.txtbox1 = this.$route.params.type === "postulant" ? "Name" : "Company Name"
     this.txtbox2 = this.$route.params.type === "postulant" ? "Last Name" : "RUC"
+    this.txtbox3 = this.$route.params.type === "postulant" ? "Civil Stattus" : "Position"
     this.linkBtnContinue = this.$route.params.type === "postulant" ? 'profile' : 'Register'
     this.ruc_or_lastNameRule = this.$route.params.type === "postulant"
         ? [
@@ -105,15 +114,41 @@ export default {
     validate() {
       this.$refs.form.validate()
     },
-    createUser() {
-      if(this.$route.params.type === "postulant"){
-        this.user.lastName = this.ruc_or_lastName;
-        PostulantsApiService.create(this.user);
-      } else {
-        this.user.ruc = this.ruc_or_lastName
-        EmployersApiService.create(this.user);
-      }
-    }
+    
+    create() {
+      let us={firstName: this.user.name, lastName: this.ruc_or_lastName,  email: this.user.email,phoneNumber:this.user.phone , password: this.user.password};
+      UserApiService.create(us)
+          .then(() => {
+            this.title === "postulant" ? this.cretePostulant() : this.createEmployer();
+          })
+          .catch(e => {
+            this.errors.push(e)
+          })
+    },
+
+    createEmployer() {
+      let us={firstName: this.user.name, lastName: this.ruc_or_lastName,  email: this.user.email,phoneNumber:this.user.phone , password: this.user.password, position: this.stattus_postition};
+
+      EmployersApiService.create(us)
+          .then(() => {
+            this.$router.push({name: 'profile'})
+          })
+          .catch(e => {
+            this.errors.push(e)
+          })
+    },
+
+    cretePostulant() {
+      let us={firstName: this.user.name, lastName: this.ruc_or_lastName,  email: this.user.email,phoneNumber:this.user.phone , password: this.user.password, civilStatus: this.stattus_postition};
+      PostulantsApiService.create(us)
+          .then(() => {
+            this.$router.push({name: 'profile'})
+          })
+          .catch(e => {
+            this.errors.push(e)
+          })
+    },
+
   },
 }
 </script>
