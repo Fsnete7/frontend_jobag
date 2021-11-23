@@ -37,7 +37,8 @@ export default {
           this.$route.name === 'create-interview' ||
           this.$route.name === 'modify-business-profile'||
           this.$route.name === 'account-employer'||
-          this.$route.name === 'modify-personal-information2'){
+          this.$route.name === 'modify-personal-information2'||
+          this.$route.name === 'choose-postulant'){
 
         this.login=1
       }else if(this.$route.name === 'home-postulant' ||

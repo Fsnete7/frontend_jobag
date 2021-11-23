@@ -40,8 +40,9 @@
             </v-container>
           </v-col>
 
+<!-----load ads--->
           <v-col align="right">
-            <v-row>
+            <v-row v-for="JobOffer in JobOffers" :key="JobOffer">
             <v-card
                 class="mx-auto mb-5"
                 width="800px"
@@ -52,13 +53,13 @@
               <v-list-item three-line>
                 <v-list-item-content>
                   <div class="text-overline mb-4 txt_anuncio">
-                    San Isidro, Lima
+                    {{ JobOffer.Date}}
                   </div>
                   <v-list-item-title class="text-h5 mb-1 txt_anuncio">
-                    Desarollador Backend
+                    {{ JobOffer.Name }}
                   </v-list-item-title>
                   <v-list-item-subtitle>
-                    Claro
+                    s/.{{ JobOffer.Salary }} por mes
                   </v-list-item-subtitle>
                 </v-list-item-content>
                 <v-list-item-avatar
@@ -81,10 +82,14 @@
 
 <script>
 
+import JobOfferApiService from "../core/services/jobOffer-api-service";
+
 export default {
   name: "home-employer",
   components: {  },
   data: () => ({
+    JobOffers: [],
+
     items: [
       {
         items: [
@@ -124,7 +129,15 @@ export default {
   }),
 
   async created() {
-    this.refresh()
+
+    try {
+      const response = await JobOfferApiService.getByEmployerId(1);
+      this.JobOffers = response.data;
+    }
+    catch (e)
+    {
+      console.error(e);
+    }
   }
 }
 </script>
