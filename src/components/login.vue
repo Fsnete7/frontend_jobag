@@ -3,7 +3,7 @@
    <v-content>
      <v-container fluid >
        <div align="center">
-         <v-img src="../assets/logo.png" width="60%" height="60%" max-width="300px" contain="contain"></v-img>
+         <v-img src="../assets/logo.png" width="100%" height="100%" max-width="200px" contain="contain"></v-img>
          <v-col cols="12" sm="10" md="10" >
            <v-text-field color="#1955AE" label="Email" outlined prepend-inner-icon="mdi-at" style="max-width: 400px"></v-text-field>
            <v-text-field color="#1955AE" label="Password" outlined prepend-inner-icon="mdi-lock" style="max-width: 400px"></v-text-field>

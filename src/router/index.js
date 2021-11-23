@@ -33,7 +33,7 @@ const routes = [
     component: () => import('../components/my-interviews')
   },
   {
-    path: '/watch-job',
+    path: '/watch-job/:id',
     name: 'watchjob',
     component: () => import('../components/watch-job')
   },

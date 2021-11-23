@@ -2,7 +2,7 @@ import http from "./http-common"
 
 class JobOfferApiService{
     getAll(){
-        return http.get("/JobOffers");
+        return http.get("/joboffers");
     }
     getById(id) {
         return http.get(`/JobOffers/${id}`);
@@ -13,7 +13,7 @@ class JobOfferApiService{
     }
 
     update(id, data) {
-        return http.put(`/joboffers/${id}`, data);
+        return http.put(`/JobOffers/${id}`, data);
     }
 
     delete(id) {
@@ -21,7 +21,7 @@ class JobOfferApiService{
     }
 
     getByEmployerId(id){
-        return http.get(`/joboffers/?jobOfferId=${id}`);
+        return http.get(`/JobOffers/?EmployerId=${id}`);
     }
 }
 

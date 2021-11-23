@@ -48,7 +48,7 @@
       </template>
 
       <v-row class="v-text-field align-center justify-center"  max-width="1200">
-        <v-text-field v-model="sector.name" :disabled="isUpdating"
+        <v-text-field v-model="Sector" :disabled="isUpdating"
                       filled color="blue-grey lighten-2"
                       label="Sector" class="align-center"></v-text-field>
 
@@ -106,21 +106,12 @@
         </template>
 
         <v-row class="v-text-field align-center justify-center"  max-width="1200">
-          <v-text-field v-model="sectorName" :disabled="isUpdating"
+          <v-text-field v-model="name" :disabled="isUpdating"
                         filled color="blue-grey lighten-2"
                         label="Sector" class="align-center"></v-text-field>
 
         </v-row>
-      <v-col cols="12">
-        <v-autocomplete
-            v-model="value"
-            :items="item.name"
-            dense
-            filled
-            label="Filled"
-        ></v-autocomplete>
 
-      </v-col>
         <v-row class="align-center justify-center">
           <v-btn color="#1955AE"
                  dark  @click="save()">Save Changes</v-btn>
@@ -135,21 +126,16 @@
 
 
 import CompanyProfilesApiService from "../core/services/company-profile-api-service";
-import SectorsApiService from "../core/services/sectors-api-service"
+
 export default {
   name: "modify-business-profile",
 
   data: () => ({
     companies: [],
-    value: null,
-    items: [],
     direction: '',
     district: '',
     city:'',
     country:'',
-    sector: [],
-    sectors: [],
-    sectorName : '',
     edit:0,
     id:0
   }),
@@ -158,10 +144,6 @@ export default {
     try {
       const response = await CompanyProfilesApiService.getById(2);
       this.companies = response.data;
-      const response2 = await SectorsApiService.getById(this.companies.sectorId)
-      this.sector= response2.data;
-      const response3 = await SectorsApiService.getAll()
-      this.sectors= response3.data;
     }
     catch (e)
     {
@@ -181,10 +163,6 @@ export default {
       CompanyProfilesApiService.update(2,this.companies);
       this.edit=0;
       this.created();
-
-      if(this.sectorName!=this.sector.name){
-        SectorsApiService.create()
-      }
     }
   }
 }
