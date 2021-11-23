@@ -74,7 +74,7 @@ const routes = [
   },
   {
     path: '/choose-postulant',
-    name: 'choose_postulant',
+    name: 'choose-postulant',
     component: () => import('../components/choose-postulant')
   },
   {

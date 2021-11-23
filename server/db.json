@@ -11,6 +11,14 @@
   ],
   "users": [
     {
+      "id": 1,
+      "FirstName": "Pablo",
+      "LastName": "Aguilar",
+      "Email": "123@hotmail.com",
+      "PhoneNumber": 156165,
+      "PassWord": "123"
+    },
+    {
       "id": 4,
       "name": "Juan",
       "email": "juanJ@gmail.com",
@@ -61,10 +69,8 @@
   "employers": [
     {
       "id": 1,
-      "name": "b",
-      "email": "cita@brr.com",
-      "password": "Asd123*",
-      "ruc": "200012342123"
+      "Position": "Boss",
+      "CompanyProfileId": 1
     },
     {
       "id": 3,
@@ -72,6 +78,37 @@
       "email": "a@d.com",
       "password": "Artis1234*",
       "ruc": "20123456672"
+    }
+  ],
+  "JobOffers":[
+    {
+      "id": 1,
+      "Name": "desarrollador",
+      "Type": "Full-time",
+      "Salary": 5000,
+      "Description": "sdllsdf",
+      "Workplace": "Workplace",
+      "Date": "11-11-11",
+      "Experience": "2 años",
+      "EmployerId": 1
+    }
+  ],
+  "CompanyProfiles": [
+    {
+      "id": 1,
+      "Direction": "lsajdlasjd",
+      "District": "lksmdlksd",
+      "City": "skdjkjsf",
+      "Country" : "lkdfnlsdf",
+      "EmployerId" : 1,
+      "SectorId": 1
+    }
+  ],
+  "Sectors": [
+    {
+      "id": 1,
+      "Name": "Telecomunicaciones",
+      "Description": "jdnljnef"
     }
   ],
   "postulant-approved": [
