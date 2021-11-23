@@ -79,7 +79,7 @@ const routes = [
   },
   {
     path: '/home-employer',
-    name: 'home_employer',
+    name: 'home-employer',
     component: () => import('../components/home-employer')
   },
   {
@@ -121,7 +121,24 @@ const routes = [
     path: '/modify-professional-profile',
     name: 'modify-professional-profile',
     component: () => import('../components/modify-professional-profile')
+  },
+  {
+    path: '/modify-business-profile',
+    name: 'modify-business-profile',
+    component: () => import('../components/modify-business-profile')
+  },
+  {
+    path: '/account-employer',
+    name: 'account-employer',
+    component: () => import('../components/account-employer')
+  },
+  {
+    path: '/modify-personal-information2',
+    name: 'modify-personal-information2',
+    component: () => import('../components/modify-personal-information2')
   }
+
+
 ]
 
 const router = new VueRouter({

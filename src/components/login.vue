@@ -11,7 +11,7 @@
          </v-col>
          <v-col cols="12" sm="10" md="10">
            <v-btn color="#1955AE"  style="color: white;width: 100% ; max-width: 400px;
-                font-size: 18px; height: 50px; border-radius: 15px" >Log In</v-btn>
+                font-size: 18px; height: 50px; border-radius: 15px" to="/home-employer">Log In</v-btn>
          </v-col>
          <v-col cols="12" sm="10" md="10">
            <router-link to="/register" style=" text-decoration: none">
@@ -27,7 +27,10 @@
 
 <script>
 export default {
-  name: "login"
+  name: "login",
+  created() {
+    this.refresh()
+  }
 }
 </script>
 

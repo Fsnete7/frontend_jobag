@@ -5,7 +5,7 @@
       <v-app-bar-nav-icon align="right" @click.stop="drawer = !drawer" color="#1955AE"></v-app-bar-nav-icon>
 
       <v-btn plain icon class="center" depressed to="/home-employer">
-        <v-avatar size="100">
+        <v-avatar size="60">
           <v-img
               max-height="70"
               max-width="70"
@@ -24,7 +24,7 @@
       </v-btn>
 
       <h4 class="text_bienvenido"> Bienvenido</h4>
-      <v-btn dark class="boton_logout" color="#EA4E4E" to="/login">Log Out</v-btn>
+      <v-btn dark class="boton_logout" color="#EA4E4E" to="/login"  @click="refresh2()" >Log Out</v-btn>
     </v-app-bar>
 
 
@@ -73,17 +73,9 @@
 
           <v-divider style="background: white;margin-top: 8px"></v-divider>
 
-          <v-list-item  to="/my-account">
+          <v-list-item  to="/account-employer">
             <div class="color">
               My account
-            </div>
-          </v-list-item>
-
-          <v-divider style="background: white;margin-top: 8px"></v-divider>
-
-          <v-list-item  >
-            <div class="color">
-              Configuration
             </div>
           </v-list-item>
 
@@ -121,11 +113,13 @@ export default {
         'Cerrar Sesión',
     ]
   }),
+
   watch: {
     group() {
       this.drawer = false
-    }
-  },
+    },
+
+  }
 
 }
 </script>

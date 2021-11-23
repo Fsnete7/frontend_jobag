@@ -5,7 +5,7 @@
       <v-app-bar-nav-icon align="right" @click.stop="drawer = !drawer" color="#1955AE"></v-app-bar-nav-icon>
 
       <v-btn plain icon class="center" depressed to="/home-postulant">
-          <v-avatar size="100">
+          <v-avatar size="60">
             <v-img
                 max-height="70"
                 max-width="70"
@@ -40,6 +40,13 @@
       <v-divider style="background: white;margin-top: 8px"></v-divider>
       <v-list nav dense>
         <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
+          <v-list-item  to="/home-postulant">
+            <div class="color">
+              Home
+            </div>
+          </v-list-item>
+
+          <v-divider style="background: white;margin-top: 8px"></v-divider>
 
           <v-list-item  to="/home-postulant">
             <div class="color">
@@ -73,13 +80,7 @@
 
           <v-divider style="background: white;margin-top: 8px"></v-divider>
 
-          <v-list-item>
-            <div class="color">
-              Configuración
-            </div>
-          </v-list-item>
 
-          <v-divider style="background: white;margin-top: 8px"></v-divider>
 
 
         </v-list-item-group>
