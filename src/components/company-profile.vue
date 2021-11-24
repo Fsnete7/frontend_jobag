@@ -1,4 +1,3 @@
-
 <template>
   <v-content  align="center" >
 
@@ -69,14 +68,11 @@
 
 
 <script>
-
-
 import CompanyProfilesApiService from "../core/services/company-profile-api-service";
 import SectorsApiService from "../core/services/sectors-api-service"
 import router from "../router";
 export default {
   name: "company-profile",
-
   data: () => ({
     direction: '',
     district: '',
@@ -86,7 +82,6 @@ export default {
     sectors: [],
   }),
   async created() {
-
     try {
       const response = await SectorsApiService.getAll()
       this.sectors= response.data;
@@ -109,7 +104,6 @@ export default {
       CompanyProfilesApiService.create(companyProfile);
       router.push({ path: `/${companyProfile.employerId}/home-employer` })
     },
-
   }
 }
 </script>
