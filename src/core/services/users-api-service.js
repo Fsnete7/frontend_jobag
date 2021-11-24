@@ -11,6 +11,9 @@ class UsersApiService{
     create(data) {
         return http.post("/users", data);
     }
+    getAll(){
+        return http.get(`/users`);
+    }
 }
 
 

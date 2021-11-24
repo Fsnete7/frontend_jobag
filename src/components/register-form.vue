@@ -32,10 +32,18 @@
               <v-text-field color="#1955AE" label="Confirm Password" v-model="confirmPassword" :rules="confirmPasswordRules" required
                             :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'" :type="show2 ? 'text' : 'password'"
                             @click:append="show2 = !show2" outlined style="max-width: 400px"></v-text-field>
-              <router-link :to="{name: this.linkBtnContinue}" style=" text-decoration: none">
-                <v-btn color="#1955AE" style="width: 100% ; max-width: 400px;
-                  font-size: 18px; height: 50px; border-radius: 15px; color:white" @click="create()">Continue</v-btn>
-              </router-link>
+              <div v-if="title==='POSTULANT'">
+                <router-link :to="{name: this.linkBtnContinue}" style=" text-decoration: none">
+                  <v-btn color="#1955AE" style="width: 100% ; max-width: 400px;
+                  font-size: 18px; height: 50px; border-radius: 15px; color:white" @click="create()" to="/professional-profile" >Continue</v-btn>
+                </router-link>
+              </div>
+              <div v-else-if="title==='EMPLOYER'">
+                <router-link :to="{name: this.linkBtnContinue}" style=" text-decoration: none">
+                  <v-btn color="#1955AE" style="width: 100% ; max-width: 400px;
+                  font-size: 18px; height: 50px; border-radius: 15px; color:white" @click="create()" to="/company-profile" >Continue</v-btn>
+                </router-link>
+              </div>
             </v-col>
           </v-form>
         </v-col>
@@ -95,7 +103,7 @@ export default {
     this.txtbox1 = this.$route.params.type === "postulant" ? "Name" : "Company Name"
     this.txtbox2 = this.$route.params.type === "postulant" ? "Last Name" : "RUC"
     this.txtbox3 = this.$route.params.type === "postulant" ? "Civil Stattus" : "Position"
-    this.linkBtnContinue = this.$route.params.type === "postulant" ? 'profile' : 'business-profile'
+        this.linkBtnContinue = this.$route.params.type === "postulant" ? 'profile' : 'business-profile'
     this.ruc_or_lastNameRule = this.$route.params.type === "postulant"
         ? [
           v => !!v || 'Last name is required',
