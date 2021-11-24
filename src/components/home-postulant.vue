@@ -49,6 +49,7 @@
                 outlined
                 hover
                 @click="redirectTo(job.jobOfferId)"
+
             >
               <v-list-item three-line>
                 <v-list-item-content>
@@ -143,6 +144,7 @@ export default {
     redirectTo(id) {
       this.$router.push({name: "watchjob", params:{id: id}})
     }
+    
   }
 }
 </script>

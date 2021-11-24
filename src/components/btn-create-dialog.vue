@@ -3,11 +3,7 @@
     <template v-slot:activator="{ on, attrs }">
 
         <v-btn class="ma-2 white--text" :loading="loading" :disabled="loading" color="#1955AE"
-            @click="loader = 'loading'" rounded  style="width: 20%" v-bind="attrs" v-on="on">{{ lblbtn }}</v-btn>
-
-      <v-btn class="ma-2 white--text" :loading="loading" :disabled="loading" color="#1955AE"
-             @click="loader = 'loading'" rounded  style="width: 20%" v-bind="attrs" v-on="on">{{ lblbtn }}</v-btn>
-
+            @click="createContract()" rounded  style="width: 20%" v-bind="attrs" v-on="on">{{ lblbtn }}</v-btn>
     </template>
     <template>
       <v-card>
@@ -23,6 +19,8 @@
 </template>
 
 <script>
+import ContractsApiService from "../core/services/contract-api-service";
+
 export default {
   name: "btn-create-dialog",
   props: {
@@ -45,6 +43,14 @@ export default {
 
       this.loader = null
     },
+  },
+
+  methods: {
+    createContract() {
+      this.contract={description:'Enviado', confirmation:true}
+      ContractsApiService.create(this.contract);
+    }
+
   }
 }
 </script>

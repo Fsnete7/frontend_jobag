@@ -73,7 +73,7 @@ const routes = [
     component: () => import('../components/create-job-ad')
   },
   {
-    path: '/joob-offer/:id/choose-postulant',
+    path: '/job-offer/:id/choose-postulant',
     name: 'choose-postulant',
     component: () => import('../components/choose-postulant')
   },
