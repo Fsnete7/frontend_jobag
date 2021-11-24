@@ -1,24 +1,24 @@
 import http from "./http-common"
 
-class PostulantsApiService{
+class postulantApiService{
     getAll(){
-        return http.get("/postulants");
+        return http.get("/postulant");
     }
     getById(id) {
-        return http.get(`/postulants/${id}`);
+        return http.get(`/postulant/${id}`);
     }
 
     create(data) {
-        return http.post("/postulants", data);
+        return http.post("/postulant", data);
     }
 
     update(id, data) {
-        return http.put(`/postulants/${id}`, data);
+        return http.put(`/postulant/${id}`, data);
     }
 
     delete(id) {
-        return http.delete(`/postulants/${id}`);
+        return http.delete(`/postulant/${id}`);
     }
 }
 
-export default new PostulantsApiService();
+export default new postulantApiService();

@@ -1,8 +1,8 @@
 import http from "./http-common"
 
-class PostulantApprovedApiService{
+class PostulationsApiService{
     getAll(){
         return http.get("/postulations");
     }
 }
-export default new PostulantApprovedApiService();
+export default new PostulationsApiService();
