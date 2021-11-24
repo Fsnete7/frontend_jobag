@@ -20,11 +20,11 @@
           >
             <v-list-item three-line>
               <v-list-item-content>
-                <v-list-item-title class="text-h5  mb-1 txt_interview">
-                  {{interview.title}}
+                <v-list-item-title class="text  mb-1 txt_interview">
+                  {{interview.link}}
                 </v-list-item-title>
                 <v-list-item-subtitle class="txt_hour">
-                  {{interview.hour}}
+                  {{interview.duration}}
                 </v-list-item-subtitle>
               </v-list-item-content>
 

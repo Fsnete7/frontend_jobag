@@ -40,7 +40,7 @@
         </v-col>
 
         <v-col  align="right">
-          <v-row v-for="postulation in postulations" :key="postulation">
+          <v-row v-for="jobOffer in jobOffers" :key="jobOffer">
             <v-card
                 class="mx-auto mb-5"
                 width="800px"
@@ -51,23 +51,18 @@
               <v-list-item three-line>
                 <v-list-item-content>
                   <div class="text-overline mb-4 txt_anuncio">
-                    {{postulation.location}}
+                    {{jobOffer.location}}
                   </div>
 
                   <v-row>
-                    <v-col align="center">
-                    <v-list-item-title class="text-lg-h5 mb-1 txt_state">
-                      {{postulation.state}}
-                    </v-list-item-title>
-                    </v-col>
                     <v-col>
                   <v-list-item-title class="text-h5 mb-1 txt_anuncio">
-                    {{postulation.title}}
+                    {{jobOffer.name}}
                   </v-list-item-title>
                     </v-col>
                   </v-row>
                   <v-list-item-subtitle>
-                    {{postulation.enterprise}}
+                    {{jobOffer.type}}
                   </v-list-item-subtitle>
                 </v-list-item-content>
                 <v-list-item-avatar
@@ -76,7 +71,7 @@
                   <v-img
                       max-height="80"
                       max-width="80"
-                      v-if="postulation.url" :src="postulation.url"></v-img>
+                      v-if="jobOffer.urlImage" :src="jobOffer.urlImage"></v-img>
                 </v-list-item-avatar>
               </v-list-item>
             </v-card>
@@ -89,13 +84,14 @@
 </template>
 
 <script>
-import PostulationsApiService from "../core/services/postulations-api-service";
+
+import JobOfferApiService from "../core/services/jobOffer-api-service";
 
 export default {
   name: "my-postulations",
   components: { },
   data: () => ({
-    postulations: [],
+    jobOffers: [],
     items: [
       {
         items: [
@@ -135,14 +131,16 @@ export default {
   }),
   async created() {
     try {
-      const response = await PostulationsApiService.getAll();
-      this.postulations = response.data;
+      const response1 = await JobOfferApiService.getAll();
+      this.jobOffers = response1.data
     }
     catch (e)
     {
       console.error(e);
+      console.log(this.jobOffers)
     }
   }
+
 }
 </script>
 

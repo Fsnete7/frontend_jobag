@@ -6,11 +6,11 @@ class PostulationsApiService{
     }
 
     getAllPostulationsByJobOfferId(id){
-        return http.get(`/postulant/${id}/postulations`);
+        return http.get(`/joboffer/${id}/postulations`);
     }
 
     getAllPostulationsByPostulantId(id){
-        return http.get(`/joboffer/${id}/postulations`);
+        return http.get(`/postulant/${id}/postulations`);
     }
 }
 export default new PostulationsApiService();
