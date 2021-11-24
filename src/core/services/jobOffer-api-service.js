@@ -5,23 +5,27 @@ class JobOfferApiService{
         return http.get("/joboffers");
     }
     getById(id) {
-        return http.get(`/JobOffers/${id}`);
+        return http.get(`/joboffers/${id}`);
     }
 
     create(data) {
-        return http.post("/JobOffers", data);
+        return http.post("/joboffers", data);
     }
 
     update(id, data) {
-        return http.put(`/JobOffers/${id}`, data);
+        return http.put(`/joboffers/${id}`, data);
     }
 
     delete(id) {
-        return http.delete(`/JobOffers/${id}`);
+        return http.delete(`/joboffers/${id}`);
     }
 
     getByEmployerId(id){
-        return http.get(`/JobOffers/?EmployerId=${id}`);
+        return http.get(`/joboffers?employerId=${id}`);
+    }
+
+    getPostulants(id){
+        return http.get(`/joboffer/${id}/postulations`);
     }
 }
 
