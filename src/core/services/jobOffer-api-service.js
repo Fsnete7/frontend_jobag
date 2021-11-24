@@ -2,7 +2,7 @@ import http from "./http-common"
 
 class JobOfferApiService{
     getAll(){
-        return http.get("/joboffers");
+        return http.get("/JobOffers");
     }
     getById(id) {
         return http.get(`/JobOffers/${id}`);
