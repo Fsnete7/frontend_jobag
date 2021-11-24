@@ -56,6 +56,7 @@ import ProfessionalProfileApiService from '../core/services/professional-profile
 export default {
   name: "register-form",
   data: () => ({
+
     //FORM
     valid: true,
     user: '',

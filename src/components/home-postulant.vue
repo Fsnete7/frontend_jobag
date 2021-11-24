@@ -6,7 +6,7 @@
           <v-row class="align-center justify-center">
             <v-img src="../assets/Name_Tag.png" height="50px" width="50px" contain="contain"></v-img>
             <h2 style="color: #1955AE" class="text-justify">BUSCAR OFERTAS DE TRABAJO</h2>
-            <v-img src="../assets/Home_Office.png" height="50px" width="50px" contain="contain"></v-img>
+            <v-img src="src/assets/Home_Office.png" height="50px" width="50px" contain="contain"></v-img>
           </v-row>
           <v-textarea label="Puesto, empresa o palabra clave"  auto-grow outlined rows="1"
                       row-height="15" style="margin-top: 20px;"></v-textarea>
@@ -48,18 +48,19 @@
                 width="800px"
                 outlined
                 hover
-                to="/watch-job"
+                @click="redirectTo(job.jobOfferId)"
+
             >
               <v-list-item three-line>
                 <v-list-item-content>
                   <div class="text-overline mb-4 txt_anuncio">
-                    {{job.location}}
+                    {{job.workplace}}
                   </div>
                   <v-list-item-title class="text-h5 mb-1 txt_anuncio">
-                    {{job.title}}
+                    {{job.name}}
                   </v-list-item-title>
                   <v-list-item-subtitle>
-                    {{job.enterprise}}
+                    {{job.type}}
                   </v-list-item-subtitle>
                 </v-list-item-content>
                 <v-list-item-avatar
@@ -68,7 +69,7 @@
                   <v-img
                       max-height="80"
                       max-width="80"
-                      v-if="job.url" :src="job.url"></v-img>
+                      v-if="job.urlImage" :src="job.urlImage"></v-img>
                 </v-list-item-avatar>
               </v-list-item>
             </v-card>
@@ -82,7 +83,7 @@
 
 <script>
 
-import JobApiService from '../core/services/jobs-api-service';
+import JobOfferApiService from '../core/services/jobOffer-api-service';
 
 
 export default {
@@ -90,6 +91,7 @@ export default {
   components: { },
   data: () => ({
     jobs: [],
+    cardId: 0,
     items: [
       {
         items: [
@@ -129,13 +131,20 @@ export default {
   }),
   async created() {
     try {
-      const response = await JobApiService.getAll();
+      const response = await JobOfferApiService.getAll();
       this.jobs = response.data;
     }
     catch (e)
     {
       console.error(e);
     }
+  },
+
+  methods: {
+    redirectTo(id) {
+      this.$router.push({name: "watchjob", params:{id: id}})
+    }
+    
   }
 }
 </script>

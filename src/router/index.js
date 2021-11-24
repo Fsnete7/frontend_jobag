@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomePostulant from '../components/home-postulant'
 import login from "@/components/login";
 import register from "@/components/register";
 
@@ -11,7 +10,7 @@ const routes = [
   {
     path: '/home-postulant',
     name: 'home-postulant',
-    component: HomePostulant
+    component: () => import('../components/home-postulant')
   },
   {
     path: '/login',
@@ -34,7 +33,7 @@ const routes = [
     component: () => import('../components/my-interviews')
   },
   {
-    path: '/watch-job',
+    path: '/watch-job/:id',
     name: 'watchjob',
     component: () => import('../components/watch-job')
   },
@@ -75,12 +74,12 @@ const routes = [
   },
   {
     path: '/choose-postulant',
-    name: 'choose_postulant',
+    name: 'choose-postulant',
     component: () => import('../components/choose-postulant')
   },
   {
     path: '/home-employer',
-    name: 'home_employer',
+    name: 'home-employer',
     component: () => import('../components/home-employer')
   },
   {
@@ -108,6 +107,38 @@ const routes = [
     name: 'modify-job-ad',
     component: () => import('../components/modify-job-ad')
   },
+  {
+    path: '/my-account',
+    name: 'my-account',
+    component: () => import('../components/my-account')
+  },
+  {
+    path: '/modify-personal-information',
+    name: 'modify-personal-information',
+    component: () => import('../components/modify-personal-information')
+  },
+  {
+    path: '/modify-professional-profile',
+    name: 'modify-professional-profile',
+    component: () => import('../components/modify-professional-profile')
+  },
+  {
+    path: '/modify-business-profile',
+    name: 'modify-business-profile',
+    component: () => import('../components/modify-business-profile')
+  },
+  {
+    path: '/account-employer',
+    name: 'account-employer',
+    component: () => import('../components/account-employer')
+  },
+  {
+    path: '/modify-personal-information2',
+    name: 'modify-personal-information2',
+    component: () => import('../components/modify-personal-information2')
+  }
+
+
 ]
 
 const router = new VueRouter({

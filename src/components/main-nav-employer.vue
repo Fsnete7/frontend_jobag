@@ -4,8 +4,8 @@
       <!--Drawer Icon-->
       <v-app-bar-nav-icon align="right" @click.stop="drawer = !drawer" color="#1955AE"></v-app-bar-nav-icon>
 
-      <v-btn plain icon class="center" to="/home-employer">
-        <v-avatar size="100">
+      <v-btn plain icon class="center" depressed to="/home-employer">
+        <v-avatar size="60">
           <v-img
               max-height="70"
               max-width="70"
@@ -24,7 +24,7 @@
       </v-btn>
 
       <h4 class="text_bienvenido"> Bienvenido</h4>
-      <v-btn dark class="boton_logout" color="#EA4E4E">Log Out</v-btn>
+      <v-btn dark class="boton_logout" color="#EA4E4E" to="/login"  @click="refresh2()" >Log Out</v-btn>
     </v-app-bar>
 
 
@@ -41,13 +41,53 @@
       <v-divider style="background: white;margin-top: 8px"></v-divider>
       <v-list nav dense>
         <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
-          <v-list-item v-for="items in menuitems" :key="items">
-            <v-list-item-content>
-              <v-list-item-title class="text_sidebar">{{ items }}</v-list-item-title>
-              <v-divider style="background: white;margin-top: 8px"></v-divider>
-            </v-list-item-content>
+          <v-list-item  to="/home-employer">
+            <div class="color">
+              Home
+            </div>
           </v-list-item>
 
+          <v-divider style="background: white;margin-top: 8px"></v-divider>
+
+          <v-list-item  to="/create-ad">
+            <div class="color">
+              Post advertisement
+            </div>
+          </v-list-item>
+
+          <v-divider style="background: white;margin-top: 8px"></v-divider>
+
+          <v-list-item  >
+            <div class="color">
+              My advertisements
+            </div>
+          </v-list-item>
+
+          <v-divider style="background: white;margin-top: 8px"></v-divider>
+
+          <v-list-item  to="/create-interview">
+            <div class="color">
+              Interviews
+            </div>
+          </v-list-item>
+
+          <v-divider style="background: white;margin-top: 8px"></v-divider>
+
+          <v-list-item  to="/account-employer">
+            <div class="color">
+              My account
+            </div>
+          </v-list-item>
+
+          <v-divider style="background: white;margin-top: 8px"></v-divider>
+
+          <v-list-item  >
+            <div class="color">
+              Log out
+            </div>
+          </v-list-item>
+
+          <v-divider style="background: white;margin-top: 8px"></v-divider>
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
@@ -73,11 +113,13 @@ export default {
         'Cerrar Sesión',
     ]
   }),
+
   watch: {
     group() {
       this.drawer = false
-    }
-  },
+    },
+
+  }
 
 }
 </script>
@@ -105,5 +147,9 @@ export default {
   margin-right: 30%;
   width: 50%;
   position: center;
+}
+
+.color{
+  color: #FAFCFF;
 }
 </style>
