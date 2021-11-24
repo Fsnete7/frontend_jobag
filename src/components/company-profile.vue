@@ -3,7 +3,7 @@
     <v-content>
       <v-container fluid>
         <v-col align="center" justify="center">
-          <h2 style="color: #1955AE" class="text-center" >PROFESSIONAL PROFILE</h2>
+          <h2 style="color: #1955AE" class="text-center" >COMPANY PROFILE</h2>
           <v-form ref="form" v-model="valid" lazy-validation>
             <v-col cols="12" sm="10" md="10" >
               <v-text-field color="#1955AE" label="Occupation" v-model="Occupation" :rules="OccupationRules" required
@@ -41,7 +41,7 @@
               </v-checkbox>
               <router-link :to="{name: 'home_employer'}" style=" text-decoration: none">
                 <v-btn color="#1955AE" style="width: 100% ; max-width: 400px;
-                    font-size: 18px; height: 50px; border-radius: 15px; color:white" to="/home-postulant" >Register</v-btn>
+                    font-size: 18px; height: 50px; border-radius: 15px; color:white" to="103/home-employer" >Register</v-btn>
               </router-link>
             </v-col>
           </v-form>
@@ -54,7 +54,7 @@
 <script>
 import ProfessionalProfileApiService from '../core/services/professional-profile-api-service';
 export default {
-  name: "professional-profile",
+  name: "company-profile",
   data: () => ({
 
     //FORM
@@ -95,7 +95,7 @@ export default {
 
   methods: {
     Home() {
-        ProfessionalProfileApiService.Home();
+      ProfessionalProfileApiService.Home();
     }
   },
 }
@@ -108,3 +108,4 @@ h2 {
   width: 400px;
 }
 </style>
+
