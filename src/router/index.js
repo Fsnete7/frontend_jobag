@@ -8,7 +8,7 @@ Vue.use(VueRouter)
 const routes = [
 
   {
-    path: '/home-postulant',
+    path: '/:id/home-postulant',
     name: 'home-postulant',
     component: () => import('../components/home-postulant')
   },
@@ -128,6 +128,11 @@ const routes = [
     component: () => import('../components/modify-business-profile')
   },
   {
+    path: '/business-profile',
+    name: 'business-profile',
+    component: () => import('../components/business-profile')
+  },
+  {
     path: '/account-employer',
     name: 'account-employer',
     component: () => import('../components/account-employer')
@@ -136,8 +141,11 @@ const routes = [
     path: '/modify-personal-information2',
     name: 'modify-personal-information2',
     component: () => import('../components/modify-personal-information2')
-  }
-
+  },
+  {
+    path: '/',
+    redirect: '/login'
+  },
 
 ]
 

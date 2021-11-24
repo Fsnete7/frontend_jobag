@@ -23,7 +23,7 @@
         </v-avatar>
       </v-btn>
 
-      <h4 class="text_bienvenido"> Bienvenido</h4>
+      <h4 class="text_bienvenido"> Bienvenido {{employer.firstName +' '+  employer.lastName}}</h4>
       <v-btn dark class="boton_logout" color="#EA4E4E" to="/login"  @click="refresh2()" >Log Out</v-btn>
     </v-app-bar>
 
@@ -96,11 +96,13 @@
 
 
 <script>
+import EmployersApiService from "../core/services/employers-api-service";
 
 export default {
   name: "main-nav-employer",
 
   data: () => ({
+    employer:{},
     drawer: false,
     group: null,
     menuitems:[
@@ -119,6 +121,18 @@ export default {
       this.drawer = false
     },
 
+  },
+  methods: {
+    retriveEmployer(){
+      EmployersApiService.getById(this.$route.params.id).then(response => {
+        this.employer = response.data;
+      }).catch(e => {
+        console.log(e);
+      });
+    },
+  },
+  mounted() {
+    this.retriveEmployer();
   }
 
 }

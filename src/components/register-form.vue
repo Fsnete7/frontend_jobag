@@ -95,7 +95,7 @@ export default {
     this.txtbox1 = this.$route.params.type === "postulant" ? "Name" : "Company Name"
     this.txtbox2 = this.$route.params.type === "postulant" ? "Last Name" : "RUC"
     this.txtbox3 = this.$route.params.type === "postulant" ? "Civil Stattus" : "Position"
-    this.linkBtnContinue = this.$route.params.type === "postulant" ? 'profile' : 'Register'
+    this.linkBtnContinue = this.$route.params.type === "postulant" ? 'profile' : 'business-profile'
     this.ruc_or_lastNameRule = this.$route.params.type === "postulant"
         ? [
           v => !!v || 'Last name is required',
@@ -131,7 +131,7 @@ export default {
 
       EmployersApiService.create(us)
           .then(() => {
-            this.$router.push({name: 'profile'})
+            // this.$router.push({name: 'profile'})
           })
           .catch(e => {
             this.errors.push(e)
@@ -142,7 +142,7 @@ export default {
       let us={firstName: this.user.name, lastName: this.ruc_or_lastName,  email: this.user.email,phoneNumber:this.user.phone , password: this.user.password, civilStatus: this.stattus_postition};
       PostulantsApiService.create(us)
           .then(() => {
-            this.$router.push({name: 'profile'})
+            // this.$router.push({name: 'profile'})
           })
           .catch(e => {
             this.errors.push(e)

@@ -22,7 +22,7 @@
         </v-avatar>
       </v-btn>
 
-      <h4 class="text_bienvenido"> Bienvenido</h4>
+      <h4 class="text_bienvenido"> Bienvenido {{postulant.firstName +' '+  postulant.lastName}}</h4>
       <v-btn dark class="boton_logout" color="#EA4E4E" to="/login">Log Out</v-btn>
     </v-app-bar>
 
@@ -93,10 +93,13 @@
 
 
 <script>
+import posulantApiService from "../core/services/postulants-api-service";
+
 export default {
   name: "main-nav-postulant",
 
   data: () => ({
+    postulant:'',
     drawer: false,
     group: null,
     menuitems:[
@@ -113,6 +116,18 @@ export default {
     group() {
       this.drawer = false
     }
+  },
+  methods: {
+    retrivePostulant(){
+      posulantApiService.getById(this.$route.params.id).then(response => {
+        this.postulant = response.data;
+      }).catch(e => {
+        console.log(e);
+      });
+    },
+  },
+  mounted() {
+    this.retrivePostulant();
   }
 }
 </script>

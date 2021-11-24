@@ -89,6 +89,7 @@ export default {
   name: "home-employer",
   components: {  },
   data: () => ({
+    employer:{},
     JobOffers: [],
 
     items: [
@@ -136,6 +137,8 @@ export default {
         console.log(e);
       });
     },
+
+
   },
 
   mounted() {
