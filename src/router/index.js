@@ -98,12 +98,12 @@ const routes = [
     component: () => import('../components/create-interview')
   },
   {
-    path: '/professional-profile',
+    path: '/:id/professional-profile',
     name: 'profile',
     component: () => import('../components/professional-profile')
   },
   {
-    path: '/company-profile',
+    path: '/:id/company-profile',
     name: 'company-profile',
     component: () => import('../components/company-profile')
   },
@@ -141,8 +141,11 @@ const routes = [
     path: '/modify-personal-information2',
     name: 'modify-personal-information2',
     component: () => import('../components/modify-personal-information2')
+  },
+  {
+    path: '/',
+    redirect: 'LogIn',
   }
-
 
 ]
 

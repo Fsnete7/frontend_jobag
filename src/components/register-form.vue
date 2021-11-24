@@ -33,16 +33,15 @@
                             :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'" :type="show2 ? 'text' : 'password'"
                             @click:append="show2 = !show2" outlined style="max-width: 400px"></v-text-field>
               <div v-if="title==='POSTULANT'">
-                <router-link :to="{name: this.linkBtnContinue}" style=" text-decoration: none">
+
+                <router-link :to="{name: 'profile', params:{id: 103}}" style=" text-decoration: none">
                   <v-btn color="#1955AE" style="width: 100% ; max-width: 400px;
-                  font-size: 18px; height: 50px; border-radius: 15px; color:white" @click="create()" to="/professional-profile" >Continue</v-btn>
+                  font-size: 18px; height: 50px; border-radius: 15px; color:white" @click="create()" >Continue</v-btn>
                 </router-link>
               </div>
               <div v-else-if="title==='EMPLOYER'">
-                <router-link :to="{name: this.linkBtnContinue}" style=" text-decoration: none">
-                  <v-btn color="#1955AE" style="width: 100% ; max-width: 400px;
-                  font-size: 18px; height: 50px; border-radius: 15px; color:white" @click="create()" to="/company-profile" >Continue</v-btn>
-                </router-link>
+                <v-btn color="#1955AE" style="width: 100% ; max-width: 400px;
+                  font-size: 18px; height: 50px; border-radius: 15px; color:white" @click="create()" >Continue</v-btn>
               </div>
             </v-col>
           </v-form>
@@ -59,11 +58,11 @@ import imgPostulant from "../assets/postulante.png"
 import PostulantsApiService from '../core/services/postulants-api-service';
 import EmployersApiService from '../core/services/employers-api-service';
 import UserApiService from '../core/services/users-api-service';
+import router from "../router";
 
 export default {
   name: "register-form",
   data: () => ({
-    linkBtnContinue:'',
     files: [],
     title:'',
     img: '',
@@ -103,7 +102,6 @@ export default {
     this.txtbox1 = this.$route.params.type === "postulant" ? "Name" : "Company Name"
     this.txtbox2 = this.$route.params.type === "postulant" ? "Last Name" : "RUC"
     this.txtbox3 = this.$route.params.type === "postulant" ? "Civil Stattus" : "Position"
-        this.linkBtnContinue = this.$route.params.type === "postulant" ? 'profile' : 'business-profile'
     this.ruc_or_lastNameRule = this.$route.params.type === "postulant"
         ? [
           v => !!v || 'Last name is required',
@@ -127,7 +125,7 @@ export default {
       let us={firstName: this.user.name, lastName: this.ruc_or_lastName,  email: this.user.email,phoneNumber:this.user.phone , password: this.user.password};
       UserApiService.create(us)
           .then(() => {
-            this.title === "postulant" ? this.cretePostulant() : this.createEmployer();
+            this.$route.params.type === "postulant" ? this.cretePostulant() : this.createEmployer();
           })
           .catch(e => {
             this.errors.push(e)
@@ -138,8 +136,9 @@ export default {
       let us={firstName: this.user.name, lastName: this.ruc_or_lastName,  email: this.user.email,phoneNumber:this.user.phone , password: this.user.password, position: this.stattus_postition};
 
       EmployersApiService.create(us)
-          .then(() => {
-            // this.$router.push({name: 'profile'})
+          .then(response => {
+            let id = response.data.employerId;
+            router.push({name: 'company-profile' , params:{id: id} })
           })
           .catch(e => {
             this.errors.push(e)
@@ -149,8 +148,9 @@ export default {
     cretePostulant() {
       let us={firstName: this.user.name, lastName: this.ruc_or_lastName,  email: this.user.email,phoneNumber:this.user.phone , password: this.user.password, civilStatus: this.stattus_postition};
       PostulantsApiService.create(us)
-          .then(() => {
-            // this.$router.push({name: 'profile'})
+          .then(response => {
+            let id = response.data.userId;
+            router.push({name: 'profile', params:{id: id}})
           })
           .catch(e => {
             this.errors.push(e)
