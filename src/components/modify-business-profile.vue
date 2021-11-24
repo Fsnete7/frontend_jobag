@@ -48,7 +48,7 @@
       </template>
 
       <v-row class="v-text-field align-center justify-center"  max-width="1200">
-        <v-text-field v-model="Sector" :disabled="isUpdating"
+        <v-text-field v-model="sector.name" :disabled="isUpdating"
                       filled color="blue-grey lighten-2"
                       label="Sector" class="align-center"></v-text-field>
 
@@ -105,13 +105,16 @@
           ></v-file-input>
         </template>
 
-        <v-row class="v-text-field align-center justify-center"  max-width="1200">
-          <v-text-field v-model="name" :disabled="isUpdating"
-                        filled color="blue-grey lighten-2"
-                        label="Sector" class="align-center"></v-text-field>
-
-        </v-row>
-
+      <v-select
+          :items="sectors"
+          item-text="name"
+          item-key="sectors"
+          item-value="id"
+          return-object
+          filled
+          @change="checkAnswer"
+          label="Sector"
+      ></v-select>
         <v-row class="align-center justify-center">
           <v-btn color="#1955AE"
                  dark  @click="save()">Save Changes</v-btn>
@@ -126,24 +129,43 @@
 
 
 import CompanyProfilesApiService from "../core/services/company-profile-api-service";
-
+import SectorsApiService from "../core/services/sectors-api-service"
 export default {
   name: "modify-business-profile",
 
   data: () => ({
     companies: [],
+    actualProfile: 4,
+    actualProfile2: 0,
+    profile:{ direction: "",
+      district: "",
+      city: "",
+      country: "",
+      employerId: 0,
+      sectorId: 0},
+    value: null,
+    items: [],
     direction: '',
     district: '',
     city:'',
     country:'',
+    sector: [],
+    sectors: [],
+    sectorActual : [],
     edit:0,
     id:0
   }),
   async created() {
 
     try {
-      const response = await CompanyProfilesApiService.getById(2);
+      const response = await CompanyProfilesApiService.getById(this.actualProfile);
       this.companies = response.data;
+      const response2 = await SectorsApiService.getById(this.companies.sectorId)
+      this.sector= response2.data;
+      const response3 = await SectorsApiService.getAll()
+      this.sectors= response3.data;
+      this.sectorActual=this.sector;
+      this.actualProfile=this.actualProfile2;
     }
     catch (e)
     {
@@ -160,9 +182,15 @@ export default {
       this.companies.district=this.district;
       this.companies.city=this.city;
       this.companies.country=this.country;
-      CompanyProfilesApiService.update(2,this.companies);
+
+        CompanyProfilesApiService.update(2,this.companies);
+
       this.edit=0;
       this.created();
+
+    },
+    checkAnswer(ittem) {
+      this.sectorActual=ittem;
     }
   }
 }
